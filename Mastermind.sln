@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.28010.2003
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mastermind", "Mastermind\Mastermind.csproj", "{6FA9FB84-07B5-4DD2-9B5D-440B167DB5E7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mastermind.Tests", "Mastermind.Tests\Mastermind.Tests.csproj", "{635849E4-BBA1-4E89-A3B5-54B995FBD2E1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{6FA9FB84-07B5-4DD2-9B5D-440B167DB5E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6FA9FB84-07B5-4DD2-9B5D-440B167DB5E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6FA9FB84-07B5-4DD2-9B5D-440B167DB5E7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{635849E4-BBA1-4E89-A3B5-54B995FBD2E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{635849E4-BBA1-4E89-A3B5-54B995FBD2E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{635849E4-BBA1-4E89-A3B5-54B995FBD2E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{635849E4-BBA1-4E89-A3B5-54B995FBD2E1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

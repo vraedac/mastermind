@@ -21,12 +21,12 @@ namespace Mastermind
 
 				try
 				{
-					var result = game.Guess(input);
+					var (result, hint) = game.Guess(input);
 
-					if (result.Result)
+					if (result)
 						Console.WriteLine("Congratulations, you've won!");
 					else if (!game.IsComplete)
-						Console.WriteLine($"Hint: {result.Hint}; {game.GuessesRemaining} guesses remaining.");
+						Console.WriteLine($"Hint: {hint}; {game.GuessesRemaining} guesses remaining.");
 					else
 						Console.WriteLine("Sorry, you have lost!");
 

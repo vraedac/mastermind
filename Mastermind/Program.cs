@@ -8,8 +8,6 @@ namespace Mastermind
 {
 	class Program
 	{
-		const string ErrString = "Input must be a string of four digits from 1 to 6, please try again.";
-
 		static void Main(string[] args)
 		{
 			int[] solution = GenerateSolution(); 
@@ -28,7 +26,7 @@ namespace Mastermind
 					else if (!game.IsComplete)
 						Console.WriteLine($"Hint: {hint}; {game.GuessesRemaining} guesses remaining.");
 					else
-						Console.WriteLine("Sorry, you have lost!");
+						Console.WriteLine($"Sorry, you have lost!  The solution was {string.Join(string.Empty, solution)}.");
 
 					if (game.IsComplete)
 					{
@@ -37,9 +35,9 @@ namespace Mastermind
 						break;
 					}
 				}
-				catch
+				catch (Exception e)
 				{
-					Console.Error.WriteLine(ErrString);
+					Console.Error.WriteLine(e.Message);
 				}
 			}
 

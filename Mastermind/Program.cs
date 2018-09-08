@@ -12,14 +12,37 @@ namespace Mastermind
 
 		static void Main(string[] args)
 		{
+			int[] solution = GenerateSolution(); 
+			var game = new Mastermind(solution);
 
-			while(true)
+			while(!game.IsComplete)
 			{
 				var input = Console.ReadLine();
 
-				if (!CheckInput(input))
+				try
+				{
+					var result = game.Guess(input);
+
+					if (result.Result)
+						Console.WriteLine("Congratulations, you've won!");
+					else if (!game.IsComplete)
+						Console.WriteLine($"Hint: {result.Hint}; {game.GuessesRemaining} guesses remaining.");
+					else
+						Console.WriteLine("Sorry, you have lost!");
+
+					if (game.IsComplete)
+					{
+						Console.WriteLine("Press any key to exit.");
+						Console.ReadKey();
+						break;
+					}
+				}
+				catch
+				{
 					Console.Error.WriteLine(ErrString);
+				}
 			}
+
 		}
 
 		static int[] GenerateSolution()
@@ -31,43 +54,6 @@ namespace Mastermind
 				result.Add(random.Next(1, 7));
 
 			return result.ToArray();
-		}
-
-		static bool CheckInput(string input)
-		{
-			bool inputCheck = int.TryParse(input, out var guess);
-
-			if (!inputCheck)
-				return false;
-
-			if (input.Length > 4)
-				return false;
-
-			return checkDigits(guess);
-
-			bool checkDigits(int value)
-			{
-				// 7152
-				if (value - 6000 >= 1000)
-					return false;
-
-				// 2751
-				var thx = value / 1000; // 2
-				var hundreds = value - (1000 * thx); // 2751 - (1000 * 2) = 751
-				if (hundreds - 600 >= 100) return false; // 751 - 600 = 151
-
-				// 2271
-				var hx = hundreds / 100; // 2
-				var tens = hundreds - (100 * hx); // 271 - (100 * 2) = 71
-				if (tens - 60 >= 10) return false; // 71 - 60 = 11
-
-				// 2457
-				var tex = tens / 10; // 5
-				var ones = tens - (10 * tex); // 57 - (10 * 5) = 7
-				if (ones - 6 >= 1) return false; // 7 - 6 = 1
-
-				return true;
-			}
 		}
 	}
 }

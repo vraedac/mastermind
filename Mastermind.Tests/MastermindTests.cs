@@ -17,7 +17,7 @@ namespace Mastermind.Tests
 		#region Validation
 
 		[Test]
-		public void Ctor_SolutionContainsInvalidNumber_Throws() => this.Invoking(x => new Mastermind(new int[] { 1, 3, 5, 9 })).Should().Throw<ArgumentOutOfRangeException>();
+		public void Ctor_SolutionContainsInvalidNumber_Throws() => this.Invoking(x => new Mastermind(new int[] { 1, 3, 5, 9 })).Should().Throw<ArgumentException>();
 
 		[Test]
 		public void Ctor_SolutionContainsTooManyNumbers_Throws() => this.Invoking(x => new Mastermind(new int[] { 1, 2, 3, 4, 5 })).Should().Throw<ArgumentException>();
@@ -45,21 +45,21 @@ namespace Mastermind.Tests
 		public void Guess_InputContainsInvalidNumber_Throws()
 		{
 			var underTest = new Mastermind(new int[] { 1, 2, 3, 4 });
-			underTest.Invoking(x => x.Guess("1238")).Should().Throw<ArgumentOutOfRangeException>();
+			underTest.Invoking(x => x.Guess("1238")).Should().Throw<ArgumentException>();
 		}
 
 		[Test]
 		public void Guess_InputContainsTooManyNumbers_Throws()
 		{
 			var underTest = new Mastermind(new int[] { 1, 2, 3, 4 });
-			underTest.Invoking(x => x.Guess("12345")).Should().Throw<ArgumentOutOfRangeException>();
+			underTest.Invoking(x => x.Guess("12345")).Should().Throw<ArgumentException>();
 		}
 
 		[Test]
 		public void Guess_InputContainsTooFewNumbers_Throws()
 		{
 			var underTest = new Mastermind(new int[] { 1, 2, 3, 4 });
-			underTest.Invoking(x => x.Guess("123")).Should().Throw<ArgumentOutOfRangeException>();
+			underTest.Invoking(x => x.Guess("123")).Should().Throw<ArgumentException>();
 		}
 
 		#endregion Validation

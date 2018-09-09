@@ -13,6 +13,8 @@ namespace Mastermind
 			int[] solution = GenerateSolution(); 
 			var game = new Mastermind(solution);
 
+			Console.Write("Welcome to Mastermind.  Start Guessing: ");
+
 			while(!game.IsComplete)
 			{
 				var input = Console.ReadLine();
@@ -24,7 +26,10 @@ namespace Mastermind
 					if (result)
 						Console.WriteLine("Congratulations, you've won!");
 					else if (!game.IsComplete)
-						Console.WriteLine($"Hint: {hint}; {game.GuessesRemaining} guesses remaining.");
+					{
+						Console.WriteLine($"Incorrect answer.  Hint: {hint}; {game.GuessesRemaining} guesses remaining.");
+						Console.Write("Next guess: ");
+					}
 					else
 						Console.WriteLine($"Sorry, you have lost!  The solution was {string.Join(string.Empty, solution)}.");
 

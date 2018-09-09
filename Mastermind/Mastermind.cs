@@ -21,8 +21,23 @@ namespace Mastermind
 
 		public Mastermind(int[] solution)
 		{
+			validateSolution();
 			_solution = solution;
 			GuessesRemaining = 10;
+
+			void validateSolution()
+			{
+				var message = "The solution must be exactly four digits between 1 and 6.";
+
+				if (solution.Length != 4)
+					throw new ArgumentException(message);
+
+				foreach (var num in solution)
+				{
+					if (num < 1 || num > 6)
+						throw new ArgumentOutOfRangeException(message);
+				}
+			}
 		}
 
 		/// <summary>

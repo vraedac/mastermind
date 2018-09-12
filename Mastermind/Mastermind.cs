@@ -60,8 +60,15 @@ namespace Mastermind
 			for (int i = 0; i < guess.Length; i++)
 			{
 				if (guess[i] == _solution[i])
+				{
 					correct++;
-				else if (_solution.Contains(guess[i]) && !checkedNumbers.Contains(guess[i]))
+					checkedNumbers.Add(guess[i]);
+				}
+			}
+
+			for (int i = 0; i < guess.Length; i++)
+			{
+				if (_solution.Contains(guess[i]) && !checkedNumbers.Contains(guess[i]))
 					partialCorrect++;
 
 				checkedNumbers.Add(guess[i]);

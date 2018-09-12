@@ -169,10 +169,13 @@ namespace Mastermind.Tests
 		}
 
 		[Test]
-		public void Guess_OneCorrectNumberInCorrectLocation_ReturnsCorrectHint() => HintTestBody(new int[] { 1, 2, 3, 4 }, "1556", "+");
+		public void Guess_OneCorrectNumberInCorrectLocation_ReturnsCorrectResult() => HintTestBody(new int[] { 1, 2, 3, 4 }, "1556", "+");
 
 		[Test]
-		public void Guess_TwoCorrectNumbersInCorrectLocation_ReturnsCorrectResult() => HintTestBody(new int[] { 1, 2, 3, 4 }, "1256", "++");
+		public void Guess_TwoCorrectNumbersInCorrectLocation_AtLeft_ReturnsCorrectResult() => HintTestBody(new int[] { 1, 2, 3, 4 }, "1256", "++");
+
+		[Test]
+		public void Guess_TwoCorrectNumbersInCorrectLocation_AtRight_ReturnsCorrectResult() => HintTestBody(new int[] { 2, 5, 1, 1 }, "1111", "++");
 
 		[Test]
 		public void Guess_ThreeCorrectNumbersInCorrectLocation_ReturnsCorrectResult() => HintTestBody(new int[] { 1, 2, 3, 4 }, "1236", "+++");

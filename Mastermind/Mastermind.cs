@@ -94,36 +94,18 @@ namespace Mastermind
 		/// <returns>The player's guess in the form of an int[4]</returns>
 		private int[] ConvertInputToGuessArray(string input)
 		{
-			bool inputCheck = int.TryParse(input, out var guess);
-
-			if (!inputCheck || input.Length != 4)
+			if (input.Length != 4)
 				throw new ArgumentException(ErrString);
 
-			return checkDigits(guess);
+			bool inputCheck = int.TryParse(input[0].ToString(), out var thousands);
+			inputCheck &= int.TryParse(input[1].ToString(), out var hundreds);
+			inputCheck &= int.TryParse(input[2].ToString(), out var tens);
+			inputCheck &= int.TryParse(input[3].ToString(), out var ones);
 
-			int[] checkDigits(int value)
-			{
-				// 7152
-				if (value - 6000 >= 1000)
-					throw new ArgumentException(ErrString);
+			if (!inputCheck || thousands > 6 || hundreds > 6 || tens > 6 || ones > 6)
+				throw new ArgumentException(ErrString);
 
-				// 2751
-				var thx = value / 1000; // 2
-				var hundreds = value - (1000 * thx); // 2751 - (1000 * 2) = 751
-				if (hundreds - 600 >= 100) throw new ArgumentException(ErrString); // 751 - 600 = 151
-
-				// 2271
-				var hx = hundreds / 100; // 2
-				var tens = hundreds - (100 * hx); // 271 - (100 * 2) = 71
-				if (tens - 60 >= 10) throw new ArgumentException(ErrString);  // 71 - 60 = 11
-
-				// 2457
-				var tex = tens / 10; // 5
-				var ones = tens - (10 * tex); // 57 - (10 * 5) = 7
-				if (ones - 6 >= 1) throw new ArgumentException(ErrString); // 7 - 6 = 1
-
-				return new int[] { thx, hx, tex, ones };
-			}
+			return new int[] { thousands, hundreds, tens, ones };
 		}
 	}
 }

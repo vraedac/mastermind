@@ -12,8 +12,6 @@ namespace Mastermind.Tests
 	[TestFixture]
 	public class MastermindTests
 	{
-		// i don't think hint format is completely correct
-
 		#region Validation
 
 		[Test]
